@@ -1,0 +1,59 @@
+Great! Let's create a website for AI & BLOCKCHAIN BASED VOTING SYSTEM.
+
+Website Structure
+Voter Login Page
+
+This is the initial page where voters will enter their credentials to log in. It will require the voter to input their unique voter ID and password.
+Personal Details Verification Page
+
+After successful login, this page will display the voter's personal details for verification. The details include:
+Voter ID
+Name
+Date of Birth
+Age
+Email ID
+Gender
+Address
+State
+District
+Pincode
+Marital Status
+Aadhar Number
+The voter must confirm that all details are correct before proceeding. If any details are incorrect, the voter can request assistance.
+Biometric Verification Page
+
+Once personal details are verified, this page will prompt the voter for biometric verification. It will include:
+Aadhar Number Input: The voter must enter their Aadhar number.
+Camera Interface: A live camera feed will appear for the voter to capture their image. This image will be compared with the photo uploaded by the admin during registration.
+Fingerprint Scanner Interface: A fingerprint scanner will be available for the voter to scan their fingerprint, which will be compared with the fingerprint data stored during registration.
+If both biometric verifications match, the voting page will open.
+Voting Page
+
+This page will display the candidates and their respective parties. The voter's personal details will already be filled in, and they will need to tick a checkbox to confirm their identity before proceeding to vote.
+Admin Panel
+
+Candidates Page: Admin can add a new candidate by entering:
+S.No
+Party Name
+Party Logo
+Candidate Name
+Action buttons (Add, Delete, Edit)
+Voter Registration Page: Admin can manage voter details, including:
+Voter ID
+Aadhar Number
+Name
+All personal details
+Action buttons (Add, Edit, Delete)
+Results Page: This page will display:
+The winning candidate's name
+Their party name
+Party logo
+Number of votes received
+Constituency
+The second highest vote-winning candidate
+This page will essentially serve as a leaderboard for the election results.
+Click here to claim your website.....see, when voter login, the personal details verification page appears....then only biometric verification page...now explain the contents of each page....after voter login page, a apage should appear for verifying the personal details of the voter, the personal details are voter id, name, date of birth, age, email.id, gender, address, state, district, pincode, marital status, aadhar number....after the persoanl details verification page, the biometric verification page should appear, in which the aadhar number, the camera should appear to capture the image of the voter, which should be saved aand erify comparing it with the photo uploaded by the admin during registration, also the fingerprint scanner should appear to scan to the fingerprint of the voter which bis then compared ....in admin panel, in candidates page, to add a new candidate, the details including, s.no, party name, party logo, candidate name, action(add, delete and edit ) should be there, in the voter registration page, voter id, aaadhar number, name, and all things from the personal details should be there, also the action block where admin can add, edit or delete the voter details....in the results page, the candidate who won, their party name, party logo,number of votes and their constiturncy...followed by the 2nd highest vote winning candidate....basicallly a leaderboardto the one which is uploaded y the admin during the voter registration. if both matches, the voting page should open. the personal details should already be there....only the verification part should ahappen and voter should tick the tickbox to proceed further. remember admin should have predefined admin credentials but admin login should not distinctly visible, voter shouls be able to vote only once. integrate valid and original fingerprint scanner, face scanning is not required.thr voter should not be able to see results. also in amdin ppanel, in results page, the candidate leaderboard along with chart is provided..
+for the user credentials voter id should be the user name and dob should be in the formaty od dd/mm/yyyy
+when the user logins with the user id and password it should be redirected to the peronal information verification page 
+when the personal information is verified it should be next redirected to the biometric verification page after the biometric verification is done it should be redirected to the voting page after the vote is casted it shloud redirect to the thankyou page 
+the voter can vote only once
