@@ -1,66 +1,70 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
 
-interface ProgressIndicatorProps {
+import { Check } from "lucide-react";
+
+interface Props {
   currentStep: "login" | "personal-details" | "biometric" | "voting" | "thank-you";
 }
 
-type Step = {
-  id: string;
-  label: string;
-};
-
-export default function ProgressIndicator({ currentStep }: ProgressIndicatorProps) {
-  const [, navigate] = useLocation();
-  const [steps, setSteps] = useState<Step[]>([
+export default function ProgressIndicator({ currentStep }: Props) {
+  const steps = [
     { id: "login", label: "Login" },
-    { id: "personal-details", label: "Verify Details" },
-    { id: "biometric", label: "Biometric" },
+    { id: "personal-details", label: "Details" },
+    { id: "biometric", label: "Verify" },
     { id: "voting", label: "Vote" },
     { id: "thank-you", label: "Complete" },
-  ]);
+  ];
 
-  const handleStepClick = (stepId: string) => {
-    // Only allow navigation to previous steps or current step
-    const currentIndex = steps.findIndex(step => step.id === currentStep);
-    const clickedIndex = steps.findIndex(step => step.id === stepId);
-    
-    if (clickedIndex <= currentIndex) {
-      navigate(`/${stepId === 'login' ? '' : stepId}`);
-    }
-  };
-
-  // Only show on relevant pages
-  if (!["login", "personal-details", "biometric", "voting", "thank-you"].includes(currentStep)) {
-    return null;
-  }
+  const currentIndex = steps.findIndex((step) => step.id === currentStep);
 
   return (
-    <div className="bg-white shadow-sm mb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-center space-x-2 md:space-x-8">
-          {steps.map((step, index) => (
-            <div key={step.id} className="flex flex-col items-center">
-              <button
-                type="button"
-                onClick={() => handleStepClick(step.id)}
-                disabled={step.id === currentStep}
-                className={`flex items-center justify-center w-10 h-10 rounded-full text-sm font-medium 
-                  ${step.id === currentStep ? 'bg-primary text-white' : 
-                    index < steps.findIndex(s => s.id === currentStep) ? 'bg-green-600 text-white' : 
-                    'bg-gray-200 border border-gray-300 text-gray-500 cursor-not-allowed'}`}
-              >
-                {index + 1}
-              </button>
-              <span className="mt-2 text-xs text-gray-500">{step.label}</span>
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute">
-                  <div className="h-px bg-gray-300 w-14 md:w-20 translate-x-12 -translate-y-5"></div>
+    <div className="w-full max-w-4xl mx-auto mb-8">
+      <div className="flex justify-between items-center">
+        {steps.map((step, index) => {
+          const isCompleted = index < currentIndex;
+          const isCurrent = step.id === currentStep;
+
+          return (
+            <div key={step.id} className="flex flex-col items-center flex-1">
+              <div className="relative w-full">
+                {index > 0 && (
+                  <div
+                    className={`absolute h-1 w-full right-1/2 top-4 -translate-y-1/2 ${
+                      isCompleted ? "bg-blue-600" : "bg-gray-200"
+                    }`}
+                  />
+                )}
+                <div
+                  className={`relative z-10 w-8 h-8 rounded-full flex items-center justify-center border-2 ${
+                    isCompleted
+                      ? "bg-blue-600 border-blue-600"
+                      : isCurrent
+                      ? "bg-white border-blue-600"
+                      : "bg-white border-gray-200"
+                  }`}
+                >
+                  {isCompleted ? (
+                    <Check className="h-4 w-4 text-white" />
+                  ) : (
+                    <span
+                      className={
+                        isCurrent ? "text-blue-600" : "text-gray-400"
+                      }
+                    >
+                      {index + 1}
+                    </span>
+                  )}
                 </div>
-              )}
+              </div>
+              <span
+                className={`mt-2 text-sm ${
+                  isCurrent ? "text-blue-600 font-medium" : "text-gray-500"
+                }`}
+              >
+                {step.label}
+              </span>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </div>
   );

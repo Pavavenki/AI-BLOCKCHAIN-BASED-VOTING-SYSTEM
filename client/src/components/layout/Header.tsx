@@ -1,33 +1,19 @@
-import { useAuth } from "@/lib/auth";
-import { CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Shield } from "lucide-react";
 
-const Header: React.FC = () => {
-  const { isAuthenticated, isAdmin, logout } = useAuth();
-
+export default function Header() {
   return (
-    <header className="bg-primary-600 text-white p-4 shadow">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold flex items-center">
-          <CheckCircle className="h-6 w-6 mr-2" />
-          AI & Blockchain Based Voting System
-        </h1>
-        <div className="flex items-center">
-          <div className="text-sm mr-4">Elections Commission of India</div>
-          {isAuthenticated && (
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="bg-transparent border-white text-white hover:bg-white hover:text-primary-600" 
-              onClick={logout}
-            >
-              {isAdmin ? "Admin Logout" : "Logout"}
-            </Button>
-          )}
+    <header className="bg-gradient-to-r from-blue-600 to-blue-800 py-6 px-4 shadow-lg">
+      <div className="container mx-auto flex items-center justify-center">
+        <Shield className="h-8 w-8 text-white mr-3" />
+        <div className="text-center">
+          <h1 className="text-2xl md:text-3xl font-bold text-white">
+            Secure Blockchain Voting
+          </h1>
+          <p className="text-blue-100 mt-1">
+            Your vote is secure, transparent, and immutable
+          </p>
         </div>
       </div>
     </header>
   );
-};
-
-export default Header;
+}
